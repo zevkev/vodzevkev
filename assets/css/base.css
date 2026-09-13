@@ -1,0 +1,199 @@
+/* ============================================================
+   vod.zevkev.me — Base (Modern Dark, Gronkh-inspiriert)
+   Modul: assets/css/base.css
+   ============================================================ */
+* { box-sizing: border-box; }
+
+html {
+  background: var(--zv-deep) !important;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--zv-font);
+  color: #eef2ff;
+  background-color: var(--zv-deep);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    var(--zv-grid-white), var(--zv-dots-white), var(--zv-noise);
+  background-size: 45px 45px, 45px 45px, auto, 26px 26px, 160px 160px;
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; }
+a { color: var(--zv-mint); }
+
+main { display: block; }
+
+/* Zonen — ruhiger Verlauf, moderner Dark-Look mit Ambient-Glows */
+.zv-zone { width: 100%; padding: 56px 20px 60px; margin: 0; display: block; position: relative; overflow: hidden; }
+.zv-zone::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+}
+.zv-zone--live {
+  background-color: var(--zv-zone-live);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    var(--zv-grid-white), var(--zv-dots-white), var(--zv-noise);
+  background-size: 45px 45px, 45px 45px, auto, 26px 26px, 160px 160px;
+}
+.zv-zone--live::before {
+  background:
+    radial-gradient(900px 420px at 12% -60px, rgba(145, 70, 255, 0.32), transparent 65%),
+    radial-gradient(760px 380px at 88% 10%, rgba(91, 192, 190, 0.24), transparent 65%);
+}
+.zv-zone--vod {
+  background-color: var(--zv-zone-vod);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    var(--zv-grid-white), var(--zv-dots-white), var(--zv-noise);
+  background-size: 45px 45px, 45px 45px, auto, 26px 26px, 160px 160px;
+  border-top: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.zv-zone--vod::before {
+  background:
+    linear-gradient(180deg, rgba(11, 19, 43, 0.55), transparent 140px),
+    radial-gradient(800px 340px at 85% 0%, rgba(91, 192, 190, 0.18), transparent 65%),
+    radial-gradient(700px 380px at 8% 100%, rgba(124, 140, 255, 0.16), transparent 65%);
+}
+.zv-zone--extra {
+  background-color: var(--zv-zone-extra);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    var(--zv-grid-white), var(--zv-dots-white), var(--zv-noise);
+  background-size: 45px 45px, 45px 45px, auto, 26px 26px, 160px 160px;
+  border-top: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.zv-zone--extra::before {
+  background:
+    linear-gradient(180deg, rgba(28, 37, 65, 0.55), transparent 140px),
+    radial-gradient(760px 340px at 50% 0%, rgba(145, 70, 255, 0.16), transparent 65%);
+}
+.zv-zone--twitch {
+  background-color: var(--zv-zone-twitch);
+  background-image:
+    linear-gradient(rgba(145, 70, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(145, 70, 255, 0.05) 1px, transparent 1px),
+    var(--zv-grid-purple), var(--zv-dots-purple), var(--zv-noise);
+  background-size: 45px 45px, 45px 45px, auto, 26px 26px, 160px 160px;
+  border-top: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+.zv-zone--twitch::before {
+  background:
+    linear-gradient(180deg, rgba(23, 26, 51, 0.55), transparent 140px),
+    radial-gradient(820px 360px at 50% -40px, rgba(145, 70, 255, 0.3), transparent 65%);
+}
+.zv-wrap { position: relative; z-index: 1; width: 100%; max-width: var(--zv-max); margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+
+/* Moderne Dark-Card (ersetzt Paper-Look) */
+.zv-paper {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)) !important;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  color: #eef2ff;
+}
+.zv-paper::before { content: none !important; }
+.zv-paper h1, .zv-paper h2, .zv-paper p { color: #eef2ff !important; text-align: left; }
+.zv-paper h1 { font-size: clamp(1.9rem, 5.5vw, 2.7rem); margin: 0; letter-spacing: 0.5px; }
+.zv-paper h2 { font-size: clamp(1.55rem, 4.5vw, 2.05rem); margin: 0; }
+.zv-paper h1 .hl, .zv-paper h2 .hl {
+  background: linear-gradient(90deg, var(--zv-accent), #7c8cff);
+  color: #06121f !important; padding: 2px 14px; display: inline-block;
+  transform: rotate(-1deg); border-radius: 8px;
+}
+.zv-zone--twitch .zv-paper h2 .hl { background: var(--zv-purple); color: #fff !important; }
+.zv-paper .sub { font-size: clamp(1rem, 2.6vw, 1.12rem); line-height: 1.6; opacity: 0.88; }
+.zv-paper .sub a { color: var(--zv-mint) !important; font-weight: bold; }
+
+/* Buttons — modern, rounded */
+.zv-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 13px 24px; font-weight: bold; font-size: 1rem; text-decoration: none;
+  min-height: 50px; box-sizing: border-box; font-family: inherit; cursor: pointer;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  border: 1px solid transparent;
+}
+.zv-btn:hover { transform: translateY(-2px); }
+.zv-btn:active { transform: translateY(0); }
+.zv-btn:focus-visible { outline: 3px solid var(--zv-mint); outline-offset: 2px; }
+.zv-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+.zv-btn-main { background: linear-gradient(90deg, var(--zv-accent), #7c8cff); color: #06121f !important; box-shadow: 0 10px 26px rgba(91, 192, 190, 0.3); border: none; }
+.zv-btn-twitch { background: var(--zv-purple); color: #fff !important; box-shadow: 0 10px 26px rgba(145, 70, 255, 0.4); border: none; }
+.zv-btn-ghost { background: rgba(255, 255, 255, 0.06); color: #fff !important; border: 1px solid rgba(255, 255, 255, 0.22); }
+.zv-btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
+.zv-btn-sm { padding: 9px 16px; min-height: 42px; font-size: 0.9rem; border-radius: 10px; }
+.zv-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+
+/* Reveal on Scroll */
+.zv-js .zv-reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.zv-js .zv-reveal.zv-on { opacity: 1; transform: translateY(0); }
+
+/* Panel + Section-Heads (geteilt: Start + Hub) */
+.zv-panel {
+  width: 100%; max-width: 1240px;
+  background: rgba(20, 24, 48, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 22px;
+  padding: 26px 26px 24px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+.zv-panel .zv-grid { max-width: none; }
+.zv-panel .zv-toolbar { justify-content: flex-start; margin-top: 16px; }
+.zv-section-head { width: 100%; text-align: left; margin: 0; }
+.zv-section-title {
+  color: #fff !important; font-size: clamp(1.4rem, 4vw, 1.8rem); font-weight: 800;
+  margin: 0; padding-bottom: 10px; position: relative;
+}
+.zv-section-title::after {
+  content: ""; position: absolute; left: 0; bottom: 0; height: 4px; width: min(46%, 340px);
+  border-radius: 2px; background: linear-gradient(90deg, #fdf2b3, rgba(253, 242, 179, 0));
+}
+.zv-section-sub { color: #c6cde6 !important; margin: 10px 0 0; max-width: 760px; font-size: 0.95rem; }
+.zv-section-sub a { color: var(--zv-mint) !important; font-weight: 700; }
+
+/* Hinweis-Pille */
+.zv-hint {
+  display: inline-block; color: #fff !important; background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.16); border-radius: 999px;
+  padding: 8px 18px; font-size: 0.92rem; margin: 20px 0 0; text-align: center;
+}
+.zv-hint a { color: var(--zv-mint) !important; font-weight: bold; }
+
+/* Dunkles Scrapbook (Shop-Stil): Tape + Rough-Kanten */
+.zv-tape {
+  position: absolute; width: 112px; height: 32px; z-index: 3;
+  background: linear-gradient(180deg, rgba(253, 242, 179, 0.85), rgba(230, 220, 170, 0.55));
+  top: 14px; left: 34px; transform: rotate(-8deg);
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.3);
+  border-left: 1px dashed rgba(0, 0, 0, 0.2);
+  border-right: 1px dashed rgba(0, 0, 0, 0.2);
+}
+.zv-rip { filter: url(#zv-rough-edge); }
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@media (max-width: 640px) {
+  .zv-zone { padding: 36px 14px 46px; }
+  .zv-row { justify-content: stretch; }
+  .zv-btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .zv-js .zv-reveal { transition: none; opacity: 1; transform: none; }
+}

@@ -1,0 +1,69 @@
+/* Modul: assets/css/components/modal.css — Detail-Modal, Watchlist-Drawer, Toasts */
+.zv-modal { position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.zv-modal[hidden] { display: none; }
+.zv-modal__backdrop { position: absolute; inset: 0; background: rgba(3, 5, 12, 0.78); backdrop-filter: blur(6px); }
+.zv-modal__card {
+  position: relative; width: min(1000px, 100%); max-height: 92vh; overflow-y: auto;
+  background: #232842; border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+.zv-modal__x {
+  position: absolute; top: 10px; right: 10px; z-index: 5;
+  width: 44px; height: 44px; border-radius: 50%; cursor: pointer;
+  background: rgba(5, 8, 15, 0.8); color: #fff; border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.1rem;
+}
+.zv-modal__player { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 16px 16px 0 0; overflow: hidden; isolation: isolate; }
+.zv-modal__player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; z-index: 1; }
+/* Click-to-Play-Fassade (JS legt Vorschaubild + Button in .zv-modal__player) */
+.zv-modal__player img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; z-index: 2; }
+.zv-modal__player > button:not(.zv-fullbtn) {
+  position: absolute; inset: 0; margin: auto; z-index: 3;
+  width: 84px; height: 84px; border-radius: 50%; border: 0; cursor: pointer;
+  background: #fdf2b3; color: #1a1a1a;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; line-height: 1;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.zv-modal__player > button:not(.zv-fullbtn):hover { transform: scale(1.08); }
+.zv-modal__player > button:not(.zv-fullbtn):focus-visible { outline: 3px solid var(--zv-mint); outline-offset: 2px; }
+.zv-modal__player > button:not(.zv-fullbtn) svg { width: 32px; height: 32px; fill: #1a1a1a; }
+.zv-modal__body { padding: 20px 22px 24px; }
+.zv-modal__body h3 { margin: 0 0 6px; color: #fff !important; font-size: 1.2rem; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.4px; }
+.zv-modal__body .zv-row { margin-top: 16px; }
+
+/* Drawer (Shop-Cart-Muster) */
+.zv-drawer { position: fixed; inset: 0; z-index: 100; }
+.zv-drawer[hidden] { display: none; }
+.zv-drawer__backdrop { position: absolute; inset: 0; background: rgba(3, 5, 12, 0.7); }
+.zv-drawer__panel {
+  position: absolute; top: 0; right: 0; height: 100%; width: min(420px, 94vw);
+  background: #1a1f38; border-left: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex; flex-direction: column;
+  animation: zv-drawer-in 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+@keyframes zv-drawer-in { from { transform: translateX(60px); opacity: 0; } to { transform: none; opacity: 1; } }
+.zv-drawer__head { display: flex; align-items: center; gap: 10px; padding: 18px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.zv-drawer__head h2 { margin: 0; color: #fff !important; font-size: 1.2rem; flex: 1; text-transform: uppercase; letter-spacing: 0.6px; }
+.zv-drawer__head small { color: #8b93b0; }
+.zv-drawer__head button { background: none; border: 0; color: #fff; font-size: 1.2rem; cursor: pointer; min-width: 44px; min-height: 44px; }
+.zv-drawer__list { flex: 1; overflow-y: auto; padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+.zv-drawer__item { display: flex; gap: 12px; align-items: center; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 12px; padding: 8px; }
+.zv-drawer__item a { display: flex; gap: 12px; align-items: center; flex: 1; min-width: 0; text-decoration: none; color: #fff !important; }
+.zv-drawer__item img { width: 112px; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; flex-shrink: 0; background: #05080f; }
+.zv-drawer__item span { font-size: 0.88rem; font-weight: 600; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.zv-drawer__item button { background: none; border: 0; color: #8b93b0; font-size: 1rem; cursor: pointer; min-width: 44px; min-height: 44px; }
+.zv-drawer__item button:hover { color: #ff7a59; }
+.zv-drawer__foot { padding: 14px 16px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+
+/* Toasts */
+.zv-toasts { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 120; display: flex; flex-direction: column; gap: 8px; align-items: center; pointer-events: none; width: max-content; max-width: 92vw; }
+.zv-toast {
+  background: #fdf2b3; color: #1a1a1a; font-weight: 700; font-size: 0.9rem;
+  padding: 12px 22px; border-radius: 999px; box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+  opacity: 0; transform: translateY(12px); transition: opacity 0.3s ease, transform 0.3s ease;
+  max-width: 92vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.zv-toast.zv-on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .zv-drawer__panel { animation: none; } .zv-toast { transition: none; } }

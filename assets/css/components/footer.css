@@ -1,0 +1,13 @@
+/* Modul: assets/css/components/footer.css */
+.zv-footer {
+  background-color: #1d1030 !important;
+  background-image: var(--zv-grid-purple), var(--zv-dots-purple), var(--zv-noise) !important;
+  background-size: auto, 26px 26px, 160px 160px !important;
+  padding: 40px 20px 46px; color: #fff;
+}
+.zv-footer__inner { max-width: var(--zv-max); margin: 0 auto; display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; }
+.zv-footer nav { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.zv-footer nav a { color: var(--zv-mint) !important; font-weight: bold; text-decoration: none; padding: 10px 14px; min-height: 44px; display: inline-flex; align-items: center; }
+.zv-footer nav a:hover { text-decoration: underline; }
+.zv-footer p { margin: 0; opacity: 0.85; font-size: 0.92rem; }
+.zv-footer .aff { font-size: 0.8rem; opacity: 0.7; }

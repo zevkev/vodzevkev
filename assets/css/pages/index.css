@@ -1,0 +1,4 @@
+/* Modul: assets/css/pages/index.css — Panel + Section-Heads liegen in base.css (geteilt mit Hub) */
+@media (max-width: 640px) {
+  .zv-panel { padding: 18px 14px; border-radius: 18px; }
+}

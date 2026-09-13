@@ -1,0 +1,13 @@
+/* Modul: assets/css/pages/legal.css — Dark Legal-Card + 404 */
+.zv-legal { width: 100%; max-width: 860px; padding: 34px 32px; }
+.zv-legal h3 { color: #fff !important; margin: 26px 0 6px; font-size: 1.15rem; }
+.zv-legal p, .zv-legal li { color: #c6cde6 !important; font-size: .98rem; }
+.zv-legal p:first-of-type { color: #eef2ff !important; }
+.zv-legal a { color: var(--zv-mint) !important; }
+.zv-error-code {
+  font-size: clamp(4rem, 18vw, 8rem); font-weight: 800; line-height: 1;
+  background: linear-gradient(90deg, var(--zv-accent), #7c8cff);
+  -webkit-background-clip: text; background-clip: text; color: transparent !important;
+  margin: 0;
+}
+@media (max-width: 640px) { .zv-legal { padding: 24px 18px; } }

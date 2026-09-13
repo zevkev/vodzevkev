@@ -1,0 +1,45 @@
+/* ============================================================
+   vod.zevkev.me — Design Tokens
+   Modul: assets/css/tokens.css
+   Palette: Dark Blue Theme (#0B132B / #1C2541 / #3A506B)
+   Texturen inspiriert von ZevWall (Grid + Dots + Noise)
+   ============================================================ */
+:root {
+  /* Basis-Palette (Vorgabe) */
+  --zv-deep: #0b132b;
+  --zv-navy: #1c2541;
+  --zv-steel: #3a506b;
+  --zv-steel-soft: #5c7a9e;
+
+  /* ZevWall-Zonen (angeglichen) */
+  --zv-zone-live: #0b132b;
+  --zv-zone-vod: #1c2541;
+  --zv-zone-extra: #171a33;
+  --zv-zone-twitch: #1d1030;
+
+  /* Akzente */
+  --zv-accent: #5bc0be;
+  --zv-mint: #5ff2c8;
+  --zv-purple: #9146ff;
+  --zv-purple-d: #4c1d95;
+  --zv-highlight: #fdf2b3;
+  --zv-live: #eb0400;
+
+  /* Paper-Cards (ZevWall) */
+  --zv-paper: #fcfbf5;
+  --zv-ink: #1a1a1a;
+  --zv-link: #0f4c81;
+
+  /* Layout */
+  --zv-max: 1100px;
+  --zv-radius: 3px;
+  --zv-shadow: 4px 8px 20px rgba(0, 0, 0, 0.35);
+  --zv-font: 'Futura', 'Trebuchet MS', Arial, sans-serif;
+
+  /* Zonen-Muster (ZevWall-Prinzip) */
+  --zv-grid-white: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 160px), repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 160px);
+  --zv-dots-white: radial-gradient(rgba(255, 255, 255, 0.17) 1.4px, transparent 1.5px);
+  --zv-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  --zv-grid-purple: repeating-linear-gradient(45deg, rgba(145, 70, 255, 0.12) 0, rgba(145, 70, 255, 0.12) 1px, transparent 1px, transparent 160px), repeating-linear-gradient(-45deg, rgba(145, 70, 255, 0.12) 0, rgba(145, 70, 255, 0.12) 1px, transparent 1px, transparent 160px);
+  --zv-dots-purple: radial-gradient(rgba(145, 70, 255, 0.2) 1.4px, transparent 1.5px);
+}

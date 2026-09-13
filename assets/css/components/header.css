@@ -1,0 +1,73 @@
+/* Modul: assets/css/components/header.css — Pill-Nav im Gronkh-Stil */
+.zv-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(11, 19, 43, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+.zv-header__inner {
+  max-width: 1280px; margin: 0 auto; padding: 8px 20px;
+  display: flex; align-items: center; gap: 10px;
+  min-height: 64px; box-sizing: border-box;
+}
+/* Logo-Pille links */
+.zv-logo {
+  display: inline-flex; align-items: center; gap: 8px; text-decoration: none; flex-shrink: 0;
+  color: #fff !important; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.3px;
+  background: linear-gradient(90deg, rgba(145, 70, 255, 0.55), rgba(91, 192, 190, 0.45));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 14px 6px 8px; border-radius: 999px;
+  min-height: 40px; box-sizing: border-box;
+}
+.zv-logo img { width: 26px; height: 26px; border-radius: 50%; background: #fff; }
+.zv-logo strong { color: #fdf2b3; }
+/* Pill-Nav Mitte */
+.zv-pills {
+  margin: 0 auto; display: flex; gap: 4px; flex-wrap: wrap; justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px; padding: 4px;
+  min-width: 0; max-width: 100%;
+}
+.zv-pills a {
+  color: #dfe6ff !important; text-decoration: none; font-size: 0.82rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.6px; white-space: nowrap;
+  padding: 7px 14px; border-radius: 999px; min-height: 34px; box-sizing: border-box;
+  display: inline-flex; align-items: center;
+  transition: background 0.2s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.zv-pills a:hover { background: rgba(255, 255, 255, 0.1); }
+.zv-pills a[aria-current="page"] { background: #fdf2b3; color: #1a1a1a !important; }
+/* Watchlist-Button */
+.zv-watchbtn {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer; flex-shrink: 0;
+  font-family: inherit; font-weight: 800; font-size: 0.9rem; color: #fdf2b3 !important;
+  background: rgba(253, 242, 179, 0.1); border: 1px solid rgba(253, 242, 179, 0.35);
+  padding: 7px 14px; border-radius: 999px; min-height: 38px; box-sizing: border-box;
+  transition: background 0.2s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.zv-watchbtn:hover { background: rgba(253, 242, 179, 0.2); transform: translateY(-1px); }
+.zv-watchbtn span { font-size: 0.75rem; background: #fdf2b3; color: #1a1a1a; border-radius: 999px; padding: 1px 9px; font-weight: 800; }
+/* Action-Button rechts */
+.zv-login {
+  display: inline-flex; align-items: center; text-decoration: none; flex-shrink: 0;
+  font-weight: 800; font-size: 0.85rem; color: #fff !important;
+  background: linear-gradient(90deg, rgba(145, 70, 255, 0.55), rgba(91, 192, 190, 0.45));
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 8px 18px; border-radius: 999px; min-height: 38px; box-sizing: border-box;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.zv-login:hover { transform: translateY(-1px); }
+/* Mobile: Pills scrollbar einzeilig */
+@media (max-width: 860px) {
+  .zv-header__inner { padding: 8px 12px; gap: 8px; }
+  .zv-pills {
+    flex: 1; min-width: 0;
+    flex-wrap: nowrap; justify-content: flex-start;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .zv-pills::-webkit-scrollbar { display: none; }
+  .zv-pills a { flex: 0 0 auto; }
+  .zv-login { padding: 8px 14px; }
+}

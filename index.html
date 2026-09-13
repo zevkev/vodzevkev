@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZEVKEV VOD · Stream & Videos | vod.zevkev.me</title>
+  <meta name="description" content="ZEVKEV VOD: Ist zevkev_ live auf Twitch, läuft der Stream hier · mit Live-Chat. Sonst siehst du das neueste Video vom VOD-Kanal @ZevKevPlus · plus Archiv aller Stream-VODs und Videos. Keine Anmeldung nötig.">
+  <link rel="canonical" href="https://vod.zevkev.me/">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0B132B">
+  <meta property="og:locale" content="de_DE">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://i.ytimg.com">
+  <link rel="preconnect" href="https://static-cdn.jtvnw.net">
+  <link rel="preconnect" href="https://api.allorigins.win">
+  <link rel="preconnect" href="https://www.youtube-nocookie.com">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ZEVKEV VOD">
+  <meta property="og:title" content="ZEVKEV VOD · Stream & Videos">
+  <meta property="og:description" content="Live auf Twitch, wenn zevkev_ streamt, sonst das neueste Video vom VOD-Kanal plus Archiv.">
+  <meta property="og:url" content="https://vod.zevkev.me/">
+  <meta property="og:image" content="https://vod.zevkev.me/assets/img/og-cover.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ZEVKEV VOD · Stream & Videos">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ZEVKEV VOD · Stream & Videos">
+  <meta name="twitter:description" content="Twitch live oder neuestes VOD-Kanal-Video + Archiv. Keine Anmeldung.">
+  <meta name="twitter:image" content="https://vod.zevkev.me/assets/img/og-cover.png">
+  <meta name="twitter:image:alt" content="ZEVKEV VOD · Stream & Videos">
+  <script type="application/ld+json" id="jsonld-broadcast">
+  {"@context":"https://schema.org","@type":"VideoObject","name":"ZEVKEV VOD · Stream & Videos","description":"Twitch-Livestream zevkev_ und VODs vom VOD-Kanal ZevKev+.","thumbnailUrl":["https://vod.zevkev.me/assets/img/og-cover.png"],"uploadDate":"2026-09-13","isLiveBroadcast":false,"publication":{"@type":"BroadcastEvent","isLiveBroadcast":false,"videoFormat":"HD"},"publisher":{"@type":"Organization","name":"ZevKev","url":"https://zevkev.me"}}
+  </script>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/components/header.css">
+  <link rel="stylesheet" href="assets/css/components/footer.css">
+  <link rel="stylesheet" href="assets/css/components/player.css">
+  <link rel="stylesheet" href="assets/css/components/vod-grid.css">
+  <link rel="stylesheet" href="assets/css/components/skeleton.css">
+  <link rel="stylesheet" href="assets/css/components/modal.css">
+  <link rel="stylesheet" href="assets/css/pages/index.css">
+</head>
+<body>
+  <div data-include="components/header.html"></div>
+
+  <main>
+    <!-- HERO: BILLBOARD (offline) ODER LIVEGRID (live) -->
+    <section class="zv-zone zv-zone--live" id="live" aria-label="Player">
+      <div class="zv-wrap">
+        <!-- Billboard: neuestes VOD-Kanal-Video, Kino-Stil -->
+        <div class="zv-billboard zv-reveal" id="billboard" hidden>
+          <img class="zv-billboard__bg" id="billboard-bg" fetchpriority="high" src="assets/img/og-cover.png" alt="" aria-hidden="true">
+          <div class="zv-billboard__grad" aria-hidden="true"></div>
+          <div class="zv-tape" aria-hidden="true"></div>
+          <div class="zv-billboard__content">
+            <span class="zv-badge zv-badge--vod" id="billboard-badge"><span class="dot"></span><span class="txt">VOD-Kanal</span></span>
+            <h1 id="billboard-title">ZEVKEV VOD</h1>
+            <p class="zv-billboard__meta" id="billboard-meta">vod.zevkev.me</p>
+            <div class="zv-row">
+              <button class="zv-btn zv-btn-main" id="billboard-play" type="button">▶ Abspielen</button>
+              <button class="zv-btn zv-btn-ghost" id="billboard-watch" type="button">+ Watchlist</button>
+              <a class="zv-btn zv-btn-ghost" id="billboard-yt" href="https://www.youtube.com/@ZevKevPlus" target="_blank" rel="noopener">YouTube</a>
+            </div>
+          </div>
+        </div>
+        <!-- Livegrid: Twitch-Player + Chat (nur wenn live) -->
+        <div class="zv-livegrid zv-reveal" id="livegrid" hidden>
+          <div class="zv-player-shell">
+            <div class="zv-frame" id="player-frame" aria-live="polite" aria-label="Videoplayer"></div>
+            <div class="zv-overlay">
+              <div class="zv-overlay__main">
+                <span class="zv-badge zv-badge--loading" id="live-badge" role="status"><span class="dot"></span><span class="txt">PRÜFE …</span></span>
+                <div class="zv-overlay__txt">
+                  <p class="zv-overlay__title" id="player-meta-title">Player lädt …</p>
+                  <p class="zv-overlay__meta" id="hero-meta">vod.zevkev.me</p>
+                </div>
+              </div>
+              <a class="zv-cta" id="hero-cta" href="#streams">▶ <span class="cta-txt">Lädt …</span></a>
+            </div>
+          </div>
+          <aside class="zv-chat" id="chat-panel" aria-label="Twitch Live-Chat" hidden>
+            <div class="zv-chat__head"><span>Live-Chat</span><a href="https://www.twitch.tv/zevkev_" target="_blank" rel="noopener">Auf Twitch →</a></div>
+            <div class="zv-chat__box" id="chat-box"></div>
+          </aside>
+        </div>
+        <div class="zv-statusline zv-reveal">
+          <p class="zv-status-text" id="live-text">Status wird geprüft …</p>
+          <button class="zv-filter zv-btn-sm" id="chat-toggle" type="button" aria-expanded="true" hidden>Chat ausblenden</button>
+          <button class="zv-filter zv-btn-sm" id="recheck-live" type="button">Neu prüfen ↻</button>
+        </div>
+        <p class="zv-player-note" id="player-note"></p>
+        <div class="zv-player-meta zv-reveal">
+          <a class="zv-btn zv-btn-twitch" href="https://www.twitch.tv/zevkev_" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/></svg>
+            Auf Twitch ansehen</a>
+          <a class="zv-btn zv-btn-ghost" href="https://www.youtube.com/@ZevKevPlus" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            VOD-Kanal auf YouTube</a>
+        </div>
+        <p class="zv-hint zv-reveal">Weiter unten: <a href="#streams">Neueste Streams</a> · <a href="#clips">Clips</a></p>
+      </div>
+    </section>
+
+    <!-- WEITER ANSEHEN (nur mit Verlauf) -->
+    <section class="zv-zone zv-zone--vod" id="continue-section" aria-label="Weiter ansehen" hidden>
+      <div class="zv-wrap">
+        <div class="zv-panel zv-reveal">
+          <div class="zv-section-head">
+            <h2 class="zv-section-title">Weiter ansehen</h2>
+            <p class="zv-section-sub">Zuletzt geöffnet, nur auf diesem Gerät gespeichert.</p>
+          </div>
+          <div class="zv-railwrap">
+            <button class="zv-railnav" data-rail="prev" aria-label="Zurück scrollen">‹</button>
+            <div class="zv-rail" id="continue-rail" aria-live="polite"></div>
+            <button class="zv-railnav" data-rail="next" aria-label="Weiter scrollen">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIE NEUSTEN STREAMS (Rail) -->
+    <section class="zv-zone zv-zone--vod" id="streams" aria-label="Neueste Streams">
+      <div class="zv-wrap">
+        <div class="zv-panel zv-reveal">
+          <div class="zv-section-head">
+            <h2 class="zv-section-title">Die neusten Streams</h2>
+            <p class="zv-section-sub" id="vod-count">Wird geladen …</p>
+          </div>
+          <div class="zv-toolbar" role="group" aria-label="Filter wählen">
+            <button class="zv-filter" data-yt-filter="alle" aria-pressed="true">Alle</button>
+            <button class="zv-filter" data-yt-filter="videos" aria-pressed="false">Videos</button>
+            <button class="zv-filter" data-yt-filter="streams" aria-pressed="false">Stream-VODs</button>
+            <input class="zv-search" id="vod-search" type="search" placeholder="Suchen …" aria-label="Videos durchsuchen">
+          </div>
+          <!-- Skeleton: Website-Skelett während Content lädt -->
+          <div class="zv-skeleton-grid" id="vod-skeleton" aria-hidden="true">
+            <div class="zv-skel"><div class="zv-skel__thumb zv-shimmer"></div><div class="zv-skel__line zv-shimmer"></div><div class="zv-skel__line short zv-shimmer"></div></div>
+            <div class="zv-skel"><div class="zv-skel__thumb zv-shimmer"></div><div class="zv-skel__line zv-shimmer"></div><div class="zv-skel__line short zv-shimmer"></div></div>
+            <div class="zv-skel"><div class="zv-skel__thumb zv-shimmer"></div><div class="zv-skel__line zv-shimmer"></div><div class="zv-skel__line short zv-shimmer"></div></div>
+            <div class="zv-skel"><div class="zv-skel__thumb zv-shimmer"></div><div class="zv-skel__line zv-shimmer"></div><div class="zv-skel__line short zv-shimmer"></div></div>
+          </div>
+          <div class="zv-railwrap">
+            <button class="zv-railnav" data-rail="prev" aria-label="Zurück scrollen">‹</button>
+            <div class="zv-rail" id="vod-rail" aria-live="polite"></div>
+            <button class="zv-railnav" data-rail="next" aria-label="Weiter scrollen">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOP-VODS NACH AUFRUFEN -->
+    <section class="zv-zone zv-zone--extra" id="top-section" aria-label="Top VODs" hidden>
+      <div class="zv-wrap">
+        <div class="zv-panel zv-reveal">
+          <div class="zv-section-head">
+            <h2 class="zv-section-title">Top-VODs</h2>
+            <p class="zv-section-sub">Die meistgesehenen Videos vom VOD-Kanal.</p>
+          </div>
+          <div class="zv-railwrap">
+            <button class="zv-railnav" data-rail="prev" aria-label="Zurück scrollen">‹</button>
+            <div class="zv-rail" id="top-rail" aria-live="polite"></div>
+            <button class="zv-railnav" data-rail="next" aria-label="Weiter scrollen">›</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIPS (VOD-Kanal) -->
+    <section class="zv-zone zv-zone--extra" id="clips" aria-label="Clips">
+      <div class="zv-wrap">
+        <div class="zv-panel zv-reveal">
+          <div class="zv-section-head">
+            <h2 class="zv-section-title">Clips</h2>
+            <p class="zv-section-sub">Kurze Videos vom VOD-Kanal.</p>
+          </div>
+          <div class="zv-skeleton-grid" id="clips-skeleton" aria-hidden="true">
+            <div class="zv-skel"><div class="zv-skel__thumb zv-shimmer"></div><div class="zv-skel__line zv-shimmer"></div><div class="zv-skel__line short zv-shimmer"></div></div>
+            <div class="zv-skel"><div class="zv-skel__thumb zv-shimmer"></div><div class="zv-skel__line zv-shimmer"></div><div class="zv-skel__line short zv-shimmer"></div></div>
+            <div class="zv-skel"><div class="zv-skel__thumb zv-shimmer"></div><div class="zv-skel__line zv-shimmer"></div><div class="zv-skel__line short zv-shimmer"></div></div>
+            <div class="zv-skel"><div class="zv-skel__thumb zv-shimmer"></div><div class="zv-skel__line zv-shimmer"></div><div class="zv-skel__line short zv-shimmer"></div></div>
+          </div>
+          <div class="zv-grid" id="clips-grid" aria-live="polite"></div>
+          <p class="zv-section-sub" id="clips-count">Wird geladen …</p>
+        </div>
+        <p class="zv-hint zv-reveal">Nichts verpassen: <a href="https://www.twitch.tv/zevkev_" target="_blank" rel="noopener">Auf Twitch folgen</a> · <a href="https://www.youtube.com/@ZevKevPlus" target="_blank" rel="noopener">VOD-Kanal auf YouTube</a></p>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="components/footer.html"></div>
+
+  <!-- Video-Modal -->
+  <div class="zv-modal" id="zv-modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="zv-modal__backdrop" data-close></div>
+    <div class="zv-modal__card">
+      <button class="zv-modal__x" type="button" data-close aria-label="Schließen">✕</button>
+      <div class="zv-modal__player"><iframe id="modal-frame" title="Video" allowfullscreen allow="accelerometer; autoplay; encrypted-media; picture-in-picture"></iframe></div>
+      <div class="zv-modal__body">
+        <h3 id="modal-title"></h3>
+        <p class="zv-card__meta" id="modal-meta"></p>
+        <p class="zv-player-note" id="modal-note" hidden>Startet das Video nicht, schaue es direkt auf YouTube.</p>
+        <div class="zv-row">
+          <a class="zv-btn zv-btn-main zv-btn-sm" id="modal-yt" href="#" target="_blank" rel="noopener">Auf YouTube ansehen</a>
+          <button class="zv-btn zv-btn-ghost zv-btn-sm" id="modal-share" type="button">Teilen</button>
+          <button class="zv-btn zv-btn-ghost zv-btn-sm" id="modal-watch" type="button">+ Watchlist</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Watchlist-Drawer -->
+  <div class="zv-drawer" id="zv-drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drawer-title">
+    <div class="zv-drawer__backdrop" data-close></div>
+    <div class="zv-drawer__panel">
+      <div class="zv-drawer__head">
+        <h2 id="drawer-title">Watchlist</h2><small id="drawer-count"></small>
+        <button type="button" data-close aria-label="Schließen">✕</button>
+      </div>
+      <div class="zv-drawer__list" id="drawer-list"></div>
+      <div class="zv-drawer__foot"><button class="zv-filter zv-btn-sm" id="drawer-clear" type="button" style="width:100%">Liste leeren</button></div>
+    </div>
+  </div>
+
+  <div class="zv-toasts" id="zv-toasts" aria-live="polite"></div>
+
+  <script src="assets/js/config.js" defer></script>
+  <script src="assets/js/include.js" defer></script>
+  <script src="assets/js/reveal.js" defer></script>
+  <script src="assets/js/store.js" defer></script>
+  <script src="assets/data/videos.js" defer></script>
+  <script src="assets/js/youtube-feed.js" defer></script>
+  <script src="assets/js/modal.js" defer></script>
+  <script src="assets/js/twitch-status.js" defer></script>
+</body>
+</html>

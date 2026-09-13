@@ -1,0 +1,33 @@
+{
+  "channel": {
+    "handle": "@ZevKevPlus",
+    "channelId": "UCTTbSiyRUop-hMeZGIJD_QA",
+    "label": "VOD-Kanal",
+    "url": "https://www.youtube.com/@ZevKevPlus"
+  },
+  "fetchedAt": "2026-09-13T22:05:45.505Z",
+  "items": [
+    {
+      "id": "ctY-3X9t-fo",
+      "title": "Phasmophobia Update: Die NEUE Map im Test! 👻",
+      "published": "2026-03-03T14:10:21+00:00",
+      "ts": 1772547021000,
+      "link": "https://www.youtube.com/watch?v=ctY-3X9t-fo",
+      "thumb": "https://i.ytimg.com/vi/ctY-3X9t-fo/maxresdefault.jpg",
+      "thumbFallback": "https://i.ytimg.com/vi/ctY-3X9t-fo/hqdefault.jpg",
+      "views": 59,
+      "shorts": false
+    },
+    {
+      "id": "lCtoee7h2cc",
+      "title": "Dieses Live Konzert ist PEAK🏔️ | bbno$ x PEAK",
+      "published": "2025-12-12T22:00:07+00:00",
+      "ts": 1765576807000,
+      "link": "https://www.youtube.com/watch?v=lCtoee7h2cc",
+      "thumb": "https://i.ytimg.com/vi/lCtoee7h2cc/maxresdefault.jpg",
+      "thumbFallback": "https://i.ytimg.com/vi/lCtoee7h2cc/hqdefault.jpg",
+      "views": 35,
+      "shorts": false
+    }
+  ]
+}
